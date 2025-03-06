@@ -48,9 +48,13 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
 }
 
 CORS_ALLOWED_ORIGINS = [
@@ -59,8 +63,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
-
-
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -120,6 +122,22 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Uzum Market API',
+    'DESCRIPTION': 'Uzum Market uchun API. Telefon raqam orqali login/register qilish imkoniyati.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': True,  # `/schema/` endpointni avtomatik ko‘rsatmaslik
+    'COMPONENT_SPLIT_REQUEST': True,
+    'SCHEMA_PATH_PREFIX': '/api/',  # Faqat `/api/` ostidagi endpointlarni ko‘rsatadi
+    'SERVERS': [
+        {'url': 'http://localhost:8000', 'description': 'Development Server'},
+        {'url': 'https://api.uzum.uz', 'description': 'Production Server'},
+    ],
+    'PREPROCESSING_HOOKS': [],
+    'POSTPROCESSING_HOOKS': [],
+    'ENUM_NAME_OVERRIDES': {},
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
