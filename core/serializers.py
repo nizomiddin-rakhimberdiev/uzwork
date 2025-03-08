@@ -33,7 +33,7 @@ class WorkSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 class OfferSerializer(serializers.ModelSerializer):
-    freelancer = serializers.PrimaryKeyRelatedField(queryset=FreelancerAccount.objects.all(), write_only=True)
+    freelancer = serializers.PrimaryKeyRelatedField(queryset=FreelancerAccount.objects.all())
     work = serializers.PrimaryKeyRelatedField(queryset=Work.objects.all())
 
     class Meta:
