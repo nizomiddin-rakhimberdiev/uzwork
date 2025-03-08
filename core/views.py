@@ -1,14 +1,19 @@
 from rest_framework import generics
 from .models import Category, Subcategory, Chat, Offer, Work
 from .serializers import CategorySerializer, SubcategorySerializer, WorkSerializer, OfferSerializer, ChatSerializer
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly, IsAuthenticated
 from .permissions import IsClient, IsFreelancer
 
 
 class CategoryList(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        if not self.request.user.is_staff:
+            raise PermissionError("Faqat adminlar kategoriya qo'shishi mumkin!")
+        serializer.save()
 
 
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -20,7 +25,12 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
 class SubcategoryList(generics.ListCreateAPIView):
     queryset = Subcategory.objects.all()
     serializer_class = SubcategorySerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        if not self.request.user.is_staff:
+            raise PermissionError("Faqat adminlar kategoriya qo'shishi mumkin!")
+        serializer.save()
 
 
 class SubcategoryDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -54,12 +64,21 @@ class OfferDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class ChatList(generics.ListCreateAPIView):
-    queryset = Chat.objects.all()
     serializer_class = ChatSerializer
-    permission_classes = [IsClient | IsFreelancer]
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Chat.objects.filter(sender=user) | Chat.objects.filter(receiver=user)
+
+    def perform_create(self, serializer):
+        serializer.save(sender=self.request.user)
 
 
 class ChatDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Chat.objects.all()
     serializer_class = ChatSerializer
-    permission_classes = [IsClient | IsFreelancer]
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Chat.objects.filter(sender=user) | Chat.objects.filter(receiver=user)
