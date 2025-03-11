@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0003_remove_chat_client_id_remove_chat_freelancer_id_and_more'),
+        ('api', '0003_remove_chat_client_id_remove_chat_freelancer_id_and_more'),
     ]
 
     operations = [

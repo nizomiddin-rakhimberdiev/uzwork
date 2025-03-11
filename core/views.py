@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from rest_framework import generics
 from .models import Category, Subcategory, Chat, Offer, Work
 from .serializers import CategorySerializer, SubcategorySerializer, WorkSerializer, OfferSerializer, ChatSerializer
@@ -82,3 +83,55 @@ class ChatDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         user = self.request.user
         return Chat.objects.filter(sender=user) | Chat.objects.filter(receiver=user)
+=======
+from django.shortcuts import render
+
+# Create your views here.
+def home_view(request):
+    return render(request, 'home.html')
+
+def orders_view(request):
+    return render(request, 'orders.html')
+
+def freelancers_view(request):
+    return render(request, 'freelancers.html')
+
+def freelancer_login(request):
+    return render(request, 'freelancer_login.html')
+
+def client_login(request):
+    return render(request, 'client_login.html')
+
+def freelancer_dashboard(request):
+    return render(request, 'freelancer_dashboard.html')
+
+def client_dashboard(request):
+    return render(request, 'client_dashboard.html')
+
+def freelancer_profile(request):
+    return render(request, 'freelancer_profile.html')
+
+def client_profile(request):
+    return render(request, 'client_profile.html')
+
+def freelancer_offers(request):
+    return render(request, 'freelancer_offers.html')
+
+def client_works(request):
+    return render(request, 'client_works.html')
+
+def client_offers(request):
+    return render(request, 'client_offers.html')
+
+def freelancer_orders(request):
+    return render(request, 'freelancer_orders.html')
+
+def client_messages(request):
+    return render(request, 'client_messages.html')
+
+def freelancer_messages(request):
+    return render(request, 'freelancer_messages.html')
+
+def create_work(request):
+    return render(request, 'create_work.html')
+>>>>>>> 611eb88 (add templates)

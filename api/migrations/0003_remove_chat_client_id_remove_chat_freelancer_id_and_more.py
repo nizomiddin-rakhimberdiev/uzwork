@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0002_initial'),
+        ('api', '0002_initial'),
         ('users', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
@@ -42,13 +42,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='work',
             name='category',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='core.category'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='api.category'),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='work',
             name='subcategory',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='core.subcategory'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='api.subcategory'),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -75,7 +75,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('freelancer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.freelanceraccount')),
-                ('work', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.work')),
+                ('work', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.work')),
             ],
         ),
     ]

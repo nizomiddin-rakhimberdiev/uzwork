@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('auth', '0012_alter_user_first_name_max_length'),
-        ('core', '0001_initial'),
+        ('api', '0001_initial'),
     ]
 
     operations = [
@@ -64,8 +64,8 @@ class Migration(migrations.Migration):
                 ('price', models.FloatField()),
                 ('bio', models.TextField()),
                 ('created_at', models.DateTimeField(auto_now=True)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.category')),
-                ('subcategory', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.subcategory')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.category')),
+                ('subcategory', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.subcategory')),
             ],
         ),
     ]

@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0004_delete_order'),
+        ('api', '0004_delete_order'),
         ('users', '0001_initial'),
     ]
 
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='freelanceraccount',
             name='category',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='core.category'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='api.category'),
         ),
         migrations.AlterField(
             model_name='freelanceraccount',
@@ -45,6 +45,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='freelanceraccount',
             name='subcategory',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='core.subcategory'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='api.subcategory'),
         ),
     ]

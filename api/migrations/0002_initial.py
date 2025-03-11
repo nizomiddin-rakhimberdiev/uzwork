@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('core', '0001_initial'),
+        ('api', '0001_initial'),
         ('users', '0001_initial'),
     ]
 
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='subcategory',
             name='category_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.category'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.category'),
         ),
         migrations.AddField(
             model_name='work',
@@ -42,6 +42,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='order',
             name='work_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.work'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.work'),
         ),
     ]

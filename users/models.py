@@ -16,8 +16,8 @@ class CustomUser(AbstractUser):
 class FreelancerAccount(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
     rating = models.FloatField(max_length=5, default=1)
-    category = models.ForeignKey("core.Category", on_delete=models.CASCADE, null=True, blank=True)
-    subcategory = models.ForeignKey("core.Subcategory", on_delete=models.CASCADE, null=True, blank=True)
+    category = models.ForeignKey("api.Category", on_delete=models.CASCADE, null=True, blank=True)
+    subcategory = models.ForeignKey("api.Subcategory", on_delete=models.CASCADE, null=True, blank=True)
     github_url = models.CharField(max_length=255, null=True, blank=True)
     portfolio_url = models.CharField(max_length=255, null=True, blank=True)
     resume = models.FileField(upload_to='resumes/', null=True, blank=True)
