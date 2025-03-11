@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from rest_framework import generics
 from .models import Category, Subcategory, Chat, Offer, Work
 from .serializers import CategorySerializer, SubcategorySerializer, WorkSerializer, OfferSerializer, ChatSerializer
@@ -134,4 +134,4 @@ def freelancer_messages(request):
 
 def create_work(request):
     return render(request, 'create_work.html')
->>>>>>> 611eb88 (add templates)
+
