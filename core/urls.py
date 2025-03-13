@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+
 from django.urls import path
 from .views import (
     CategoryList, CategoryDetail,
     SubcategoryList, SubcategoryDetail,
     WorkList, WorkDetail,
     OfferList, OfferDetail,
-    ChatList, ChatDetail
+    ChatList, ChatDetail, client_profile, client_dashboard
 )
 
 urlpatterns = [
@@ -23,8 +23,6 @@ urlpatterns = [
 
     path('chats/', ChatList.as_view(), name='chat-list'),
     path('chats/<int:pk>/', ChatDetail.as_view(), name='chat-detail'),
+
+    path('client/', client_dashboard, name='client'),
 ]
-=======
-
-
->>>>>>> 611eb88 (add templates)

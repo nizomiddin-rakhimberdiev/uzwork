@@ -1,9 +1,11 @@
 
 from rest_framework import generics
-from .models import Category, Subcategory, Chat, Offer, Work
-from .serializers import CategorySerializer, SubcategorySerializer, WorkSerializer, OfferSerializer, ChatSerializer
+
+from users.serializers import CustomUser
+from api.models import Category, Subcategory, Chat, Offer, Work
+from api.serializers import CategorySerializer, SubcategorySerializer, WorkSerializer, OfferSerializer, ChatSerializer
 from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly, IsAuthenticated
-from .permissions import IsClient, IsFreelancer
+from api.permissions import IsClient, IsFreelancer
 
 
 class CategoryList(generics.ListCreateAPIView):
@@ -83,7 +85,7 @@ class ChatDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         user = self.request.user
         return Chat.objects.filter(sender=user) | Chat.objects.filter(receiver=user)
-=======
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -103,10 +105,16 @@ def client_login(request):
     return render(request, 'client_login.html')
 
 def freelancer_dashboard(request):
+    freelancer = CustomUser.objects.get(user=request.user)
+    data = FreelancerProfile.objects.get(user=freelancer)
+    context = {
+        'freelancer': freelancer,
+        'data': data,
+    }
     return render(request, 'freelancer_dashboard.html')
 
 def client_dashboard(request):
-    return render(request, 'client_dashboard.html')
+    return render(request, 'client/index.html')
 
 def freelancer_profile(request):
     return render(request, 'freelancer_profile.html')

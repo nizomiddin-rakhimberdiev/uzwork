@@ -1,0 +1,48 @@
+::-webkit-scrollbar {
+  width: 0;
+}
+*,
+:after,
+:before {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.container {
+  overflow: hidden;
+  padding: 20px;
+  margin: 0;
+  width: 100%;
+  max-width: inherit;
+}
+.common-layout .container {
+  height: 100vh;
+}
+@font-face {
+  font-family: Montserrat;
+  src: local("Montserrat"),
+    url(../../static/fonts/Montserrat-Medium.b3ba703c.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: Montserrat;
+  src: local("Montserrat"),
+    url(../../static/fonts/Montserrat-Bold.1f023b34.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: Montserrat;
+  src: local("Montserrat"),
+    url(../../static/fonts/Montserrat-Regular.3fe868a1.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+.mbottom-1 {
+  margin-bottom: 28px;
+}
+.mbottom-2 {
+  margin-bottom: 56px;
+}
