@@ -90,7 +90,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def home_view(request):
-    return render(request, 'home.html')
+    return render(request, 'home/index.html')
 
 def orders_view(request):
     return render(request, 'orders.html')
@@ -105,25 +105,20 @@ def client_login(request):
     return render(request, 'client_login.html')
 
 def freelancer_dashboard(request):
-    freelancer = CustomUser.objects.get(user=request.user)
-    data = FreelancerProfile.objects.get(user=freelancer)
-    context = {
-        'freelancer': freelancer,
-        'data': data,
-    }
-    return render(request, 'freelancer_dashboard.html')
+
+    return render(request, 'freelancer/index.html')
 
 def client_dashboard(request):
     return render(request, 'client/index.html')
 
 def freelancer_profile(request):
-    return render(request, 'freelancer_profile.html')
+    return render(request, 'freelancer/aboutme.html')
 
 def client_profile(request):
     return render(request, 'client_profile.html')
 
 def freelancer_offers(request):
-    return render(request, 'freelancer_offers.html')
+    return render(request, 'freelancer/offers.html')
 
 def client_works(request):
     return render(request, 'client_works.html')
