@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
+from django.views import View
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -121,3 +122,52 @@ class ProfileView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class FreelancerLoginView(View):
+    def get(self, request):
+        return render(request, 'login.html', {"role": "freelancer"})
+
+    def post(self, request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+
+        if user and hasattr(user, 'freelanceraccount'):
+            login(request, user)
+            refresh = RefreshToken.for_user(user)
+            response = redirect("freelancer")
+            response.set_cookie('access_token', str(refresh.access_token), httponly=True)
+            return response
+
+        return render(request, 'login.html', {'error': "Invalid credentials", "role": "freelancer"})
+
+# Client Login
+class ClientLoginView(View):
+    def get(self, request):
+        return render(request, 'login.html', {"role": "client"})
+
+    def post(self, request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+
+        if user and hasattr(user, 'clientaccount'):
+            login(request, user)
+            refresh = RefreshToken.for_user(user)
+            response = redirect("client")
+            response.set_cookie('access_token', str(refresh.access_token), httponly=True)
+            return response
+
+        return render(request, 'login.html', {'error': "Invalid credentials", "role": "client"})
+
+# Freelancer Profile
+class FreelancerProfileView(View):
+    def get(self, request, username):
+        return render(request, 'freelancer.html', {"username": username, "role": "freelancer"})
+
+# Client Profile
+class ClientProfileView(View):
+    def get(self, request, username):
+        return render(request, 'profile.html', {"username": username, "role": "client"})
+
