@@ -93,10 +93,12 @@ def home_view(request):
     return render(request, 'home/index.html')
 
 def orders_view(request):
-    return render(request, 'orders.html')
+    return render(request, 'home/orders.html')
+
+
 
 def freelancers_view(request):
-    return render(request, 'freelancers.html')
+    return render(request, 'home/freelancers.html')
 
 def freelancer_login(request):
     return render(request, 'freelancer_login.html')
@@ -127,7 +129,7 @@ def client_offers(request):
     return render(request, 'client_offers.html')
 
 def freelancer_orders(request):
-    return render(request, 'freelancer_orders.html')
+    return render(request, 'freelancer/orders.html')
 
 def client_messages(request):
     return render(request, 'client_messages.html')

@@ -113,10 +113,10 @@
                                 <li data-v-3695e236="" class=""><a data-v-3695e236="" href="#/cabinet/chatify"
                                         class=""><span data-v-3695e236="">Chat</span> <!----></a></li>
                                 <li data-v-3695e236="" class=""><a data-v-3695e236=""
-                                        href="#/cabinet/freelancer/dashboard/freelancer-offers" class="">Mening
+                                        href="{% url 'freelancer-offers' %}" class="">Mening
                                         takliflarim</a></li>
                                 <li data-v-3695e236="" class=""><a data-v-3695e236=""
-                                        href="#/cabinet/freelancer/dashboard/orders" class=""> Mening buyurtmalarim </a>
+                                        href="{% url 'freelancer-orders' %}" class=""> Mening buyurtmalarimm </a>
                                 </li>
                                 <li data-v-3695e236="" class=""><a data-v-3695e236=""
                                         href="#/cabinet/freelancer/dashboard/freelancer-complaints" class="">Shikoyatlar
@@ -144,7 +144,7 @@
                                                 src="/static/img/icon-go-back.703f2997.svg" alt="" style="z-index: 0;">
                                         </div>
                                         <div data-v-74b929de="" class="d-flex align-items-end"><span data-v-74b929de=""
-                                                class="ml-2" style="z-index: 0;">Asosiy sahifaga qaytish</span></div>
+                                                class="ml-2" style="z-index: 0;"><a href="{% url 'home' %}">Asosiy sahifaga qaytish</a></span></div>
                                     </div>
                                 </div>
                                 <div data-v-74b929de="" class="d-flex justify-content-center change-role-section">
@@ -188,7 +188,7 @@
                                     <div data-v-74b929de="" class="greeting">Frilanserning shaxsiy sahifasi</div>
                                     <div data-v-74b929de="" class="return-home cur-point d-flex"><img data-v-74b929de=""
                                             src="/static/img/icon-go-back.703f2997.svg" alt=""><span data-v-74b929de=""
-                                            class="ml-2">Asosiy sahifaga qaytish</span></div>
+                                            class="ml-2"><a href="{% url 'home' %}">Asosiy sahifaga qaytish</a></span></div>
                                 </div>
                             </div>
                         </div>

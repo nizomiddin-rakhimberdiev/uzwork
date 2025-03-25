@@ -6,7 +6,7 @@ from .views import (
     WorkList, WorkDetail,
     OfferList, OfferDetail,
     ChatList, ChatDetail, client_profile, client_dashboard, home_view, freelancer_dashboard, freelancer_offers,
-    freelancer_profile
+    freelancer_profile, freelancer_orders, orders_view, freelancers_view
 )
 
 urlpatterns = [
@@ -20,6 +20,9 @@ urlpatterns = [
     path('works/', WorkList.as_view(), name='work-list'),
     path('works/<int:pk>/', WorkDetail.as_view(), name='work-detail'),
 
+    path('orders/', orders_view, name='orders'),
+    path('freelancers/', freelancers_view, name='freelancers'),
+
     path('offers/', OfferList.as_view(), name='offer-list'),
     path('offers/<int:pk>/', OfferDetail.as_view(), name='offer-detail'),
 
@@ -29,5 +32,6 @@ urlpatterns = [
     path('client/', client_dashboard, name='client'),
     path('freelancer/', freelancer_dashboard, name='freelancer'),
     path('freelancer-offers/', freelancer_offers, name='freelancer-offers'),
+    path('freelancer-orders/', freelancer_orders, name='freelancer-orders'),
     path('freelancer-profile/', freelancer_profile, name='freelancer-profile'),
 ]
